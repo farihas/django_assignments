@@ -36,17 +36,3 @@ class User(models.Model):
       return "<User object: {} {} {} {} {}>".format(
          self.first_name, self.last_name, self.email, self.created_at.strftime("%m-%d-%Y %H:%M %p"), self.updated_at.strftime("%m-%d-%Y %H:%M %p")
       )
-   # def __str__(self):
-
-
-#    def getCreatedAt(self):     
-#       created_at = {
-#          "created_at": self.created_at.strftime("%m-%d-%Y %H:%M %p", gmtime())  
-#       }
-#       return created_at
-
-#    def getUpdatedAt(self):     
-#       updated_at = {
-#          "updated_at": self.updated_at.strftime("%m-%d-%Y %H:%M %p", gmtime())
-#       }
-#       return updated_at
