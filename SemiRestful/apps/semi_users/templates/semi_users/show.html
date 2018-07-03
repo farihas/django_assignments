@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>User Record Page</title>
+		{% load static %}	<!-- This line tells Django to be ready for static files -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" media="screen" href="{% static 'main/styles.css'%}" />
+</head>
+
+<body>
+   <br/>
+   <h2>User {{ user.id }}</h2>
+   <br/>
+   Full Name: {{ user.first_name }} {{ user.last_name }}
+   Email: {{ user.email }}
+   Created at: {{ user.created_at }}
+   <br/><br/>
+   <a href="/users/{{ user.id }}/edit">Edit</a><span> | </span>
+   <a href="/users/{{ user.id }}/destroy">Delete</a>
+</body>
+</html>
