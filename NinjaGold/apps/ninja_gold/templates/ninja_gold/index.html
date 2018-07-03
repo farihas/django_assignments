@@ -1,0 +1,69 @@
+<!-- Have the four forms appear when the user goes to http://localhost 
+     Use a hidden input tag value in the form to pass the relevant location to the server 
+     For this assignment, we’re not using a database. Just save the activity logs in session.
+     BONUS: Refactor your code to remove the hidden input and instead use a route parameter-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="utf-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <title>Ninja Gold</title>
+   {% load static %}   <!-- This line tells Django to be ready for static files -->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" type="text/css" media="screen" href="{% static 'ninja_gold/styles.css'%}" />
+</head>
+
+<body>
+   <form>
+      <label>Your Gold:</label>
+      <output id="inline" type="number">{{ request.session.gold }}</output>
+   </form>    
+   <div class=building id=farm>
+      <h1>Farm</h1> 
+      <h3>(earns 10-20 golds)</h3>
+      <form action="/ninja_gold/process_money" method="post">
+         {% csrf_token %}
+         <input type="hidden" name="building" value="farm" />
+         <input type="submit" value="Find Gold!"/>
+      </form>
+   </div> 
+   <div class=building id=cave>
+      <h1>Cave</h1> 
+      <h3>(earns 5-10 golds)</h3>
+      <form action="/ninja_gold/process_money" method="post">
+         {% csrf_token %}
+         <input type="hidden" name="building" value="cave" />
+         <input type="submit" value="Find Gold!"/>
+      </form>
+   </div>    
+   <div class=building id=house> 
+      <h1>House</h1> 
+      <h3>(earns 2-5 golds)</h3>
+      <form action="/ninja_gold/process_money" method="post">
+         {% csrf_token %}
+         <input type="hidden" name="building" value="farm" />
+         <input type="submit" value="Find Gold!"/>
+      </form>
+   </div>     
+   <div class=building id=casino> 
+      <h1>Casino</h1> 
+      <h3>(earns/loses 0-50 golds)</h3>
+      <form action="/ninja_gold/process_money" method="post">
+         {% csrf_token %}      
+         <input type="hidden" name="building" value="casino" />
+         <input type="submit" value="Find Gold!"/>
+      </form>
+   </div>     
+   <form>
+      <label>Activities:</label>
+      <output id="log-box" type="text">
+         {% for entry in request.session.activity %}
+            <p>{{ entry|safe }}</p>
+         {% endfor %}
+      </output>
+   </form>       
+</body>
+
+</html>

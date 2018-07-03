@@ -1,0 +1,33 @@
+* {
+   box-sizing: border-box;
+   padding: 5px;
+}
+#inline {
+   display: inline-block;
+   width: 220px;
+}
+h1, h3, .building {
+   text-align: center; 
+}
+.building {
+   display: inline-block;
+   border: 1px solid black;
+   width: 230px;
+   height: 200px;
+   margin: 10px;
+   padding: 0 10px;
+}
+p {
+   color: green;
+}
+#red {
+   color: red;
+}
+output {
+   display: block;
+   border: 1px solid black;
+}
+#log-box{
+   width: 1000px;
+   overflow-y: scroll;
+}
